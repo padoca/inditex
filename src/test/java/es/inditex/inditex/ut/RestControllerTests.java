@@ -3,9 +3,6 @@ package es.inditex.inditex.ut;
 import es.inditex.inditex.controller.PricesRestController;
 import es.inditex.inditex.dto.PricesDto;
 import es.inditex.inditex.service.PricesService;
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -13,6 +10,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
+
+import java.math.BigDecimal;
+import java.util.List;
 
 @SpringBootTest
 class RestControllerTests {

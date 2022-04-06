@@ -6,15 +6,16 @@ import es.inditex.inditex.repository.entity.Prices;
 import es.inditex.inditex.service.PricesService;
 import es.inditex.inditex.service.mapper.PricesResponseEntityMapper;
 import es.inditex.inditex.util.Utils;
-import java.math.BigDecimal;
-import java.text.ParseException;
-import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.util.List;
 
 @SpringBootTest
 class ServiceTests {
