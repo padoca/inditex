@@ -1,12 +1,7 @@
 package es.inditex.inditex.it;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 import es.inditex.inditex.dto.PricesDto;
 import es.inditex.inditex.service.PricesService;
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.stream.Collectors;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +13,12 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.util.MimeTypeUtils;
+
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest()
 @AutoConfigureMockMvc
