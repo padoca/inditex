@@ -3,6 +3,7 @@ package es.inditex.inditex.ut;
 import es.inditex.inditex.controller.PricesRestController;
 import es.inditex.inditex.dto.PricesDto;
 import es.inditex.inditex.service.PricesService;
+import es.inditex.inditex.util.Utils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -30,16 +31,16 @@ class RestControllerTests {
 
   @Test
   public void given_Test1Request_when_GetEndpointCalled_then_ReturnsExpecteed() {
-    Mockito.when(pricesService.getPricesFilter("2020-06-14-10.00.00", 35455, 1)).thenReturn(List.of(prices1));
-    ResponseEntity<List<PricesDto>> result = pricesRestController.getPrices("2020-06-14-10.00.00", 35455, 1);
+    Mockito.when(pricesService.getPricesFilter(Utils.toLocalDateTime("2020-06-14-10.00.00"), 35455, 1)).thenReturn(List.of(prices1));
+    ResponseEntity<List<PricesDto>> result = pricesRestController.getPrices(Utils.toLocalDateTime("2020-06-14-10.00.00"), 35455, 1);
     Assertions.assertNotNull(result);
     Assertions.assertEquals(result.getBody().get(0).getPrice(), prices1.getPrice());
   }
 
   @Test
   public void given_Test2Request_when_GetEndpointCalled_then_ReturnsExpecteed() {
-    Mockito.when(pricesService.getPricesFilter("2020-06-14-16.00.00", 35455, 1)).thenReturn(List.of(prices1, prices2));
-    ResponseEntity<List<PricesDto>> result = pricesRestController.getPrices("2020-06-14-16.00.00", 35455, 1);
+    Mockito.when(pricesService.getPricesFilter(Utils.toLocalDateTime("2020-06-14-16.00.00"), 35455, 1)).thenReturn(List.of(prices1, prices2));
+    ResponseEntity<List<PricesDto>> result = pricesRestController.getPrices(Utils.toLocalDateTime("2020-06-14-16.00.00"), 35455, 1);
     Assertions.assertNotNull(result);
     Assertions.assertEquals(result.getBody().get(0).getPrice(), prices1.getPrice());
     Assertions.assertEquals(result.getBody().get(1).getPrice(), prices2.getPrice());
@@ -47,16 +48,16 @@ class RestControllerTests {
 
   @Test
   public void given_Test3Request_when_GetEndpointCalled_then_ReturnsExpecteed() {
-    Mockito.when(pricesService.getPricesFilter("2020-06-14-21.00.00", 35455, 1)).thenReturn(List.of(prices1));
-    ResponseEntity<List<PricesDto>> result = pricesRestController.getPrices("2020-06-14-21.00.00", 35455, 1);
+    Mockito.when(pricesService.getPricesFilter(Utils.toLocalDateTime("2020-06-14-21.00.00"), 35455, 1)).thenReturn(List.of(prices1));
+    ResponseEntity<List<PricesDto>> result = pricesRestController.getPrices(Utils.toLocalDateTime("2020-06-14-21.00.00"), 35455, 1);
     Assertions.assertNotNull(result);
     Assertions.assertEquals(result.getBody().get(0).getPrice(), prices1.getPrice());
   }
 
   @Test
   public void given_Test4Request_when_GetEndpointCalled_then_ReturnsExpecteed() {
-    Mockito.when(pricesService.getPricesFilter("2020-06-15-10.00.00", 35455, 1)).thenReturn(List.of(prices1, prices3));
-    ResponseEntity<List<PricesDto>> result = pricesRestController.getPrices("2020-06-15-10.00.00", 35455, 1);
+    Mockito.when(pricesService.getPricesFilter(Utils.toLocalDateTime("2020-06-15-10.00.00"), 35455, 1)).thenReturn(List.of(prices1, prices3));
+    ResponseEntity<List<PricesDto>> result = pricesRestController.getPrices(Utils.toLocalDateTime("2020-06-15-10.00.00"), 35455, 1);
     Assertions.assertNotNull(result);
     Assertions.assertEquals(result.getBody().get(0).getPrice(), prices1.getPrice());
     Assertions.assertEquals(result.getBody().get(1).getPrice(), prices3.getPrice());
@@ -64,8 +65,8 @@ class RestControllerTests {
 
   @Test
   public void given_Test5Request_when_GetEndpointCalled_then_ReturnsExpecteed() {
-    Mockito.when(pricesService.getPricesFilter("2020-06-16-21.00.00", 35455, 1)).thenReturn(List.of(prices1, prices4));
-    ResponseEntity<List<PricesDto>> result = pricesRestController.getPrices("2020-06-16-21.00.00", 35455, 1);
+    Mockito.when(pricesService.getPricesFilter(Utils.toLocalDateTime("2020-06-16-21.00.00"), 35455, 1)).thenReturn(List.of(prices1, prices4));
+    ResponseEntity<List<PricesDto>> result = pricesRestController.getPrices(Utils.toLocalDateTime("2020-06-16-21.00.00"), 35455, 1);
     Assertions.assertNotNull(result);
     Assertions.assertEquals(result.getBody().get(0).getPrice(), prices1.getPrice());
     Assertions.assertEquals(result.getBody().get(1).getPrice(), prices4.getPrice());
