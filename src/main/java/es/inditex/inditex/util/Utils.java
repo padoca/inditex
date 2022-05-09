@@ -3,6 +3,7 @@ package es.inditex.inditex.util;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Utils {
@@ -31,5 +32,17 @@ public class Utils {
     SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_PATTERN);
     return new Timestamp(dateFormat.parse(date).getTime());
   }
+
+  /**
+   * Convert date to LocalDateTime with date format.
+   *
+   * @param date String date to convert.
+   * @return timestamp date.
+   */
+  public static LocalDateTime toLocalDateTime(final String date)  {
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_PATTERN);
+    return LocalDateTime.parse(date, formatter);
+  }
+
 
 }

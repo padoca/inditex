@@ -13,6 +13,7 @@ import org.springframework.web.client.HttpClientErrorException;
 
 import java.sql.Timestamp;
 import java.text.ParseException;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,14 +27,8 @@ public class PricesService {
   @Autowired
   private PricesResponseEntityMapper pricesResponseEntityMapper;
 
-  public List<PricesDto> getPricesFilter(final String applicationDate, final Integer productId, final Integer brandId) {
-    Timestamp applicationDateTimestamp;
-    try {
-      applicationDateTimestamp = applicationDate != null ? Utils.toTimestamp(applicationDate) : null;
-    } catch (ParseException e) {
-      log.error("Error to parse applicationDate " + applicationDate);
-      throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
-    }
+  public List<PricesDto> getPricesFilter(final LocalDateTime applicationDate, final Integer productId, final Integer brandId) {
+    Timestamp applicationDateTimestamp = applicationDate != null ? Timestamp.valueOf(applicationDate) : null;
     List<Prices> result = pricesRepository.findByFilter(applicationDateTimestamp, productId, brandId);
     return result.stream().map(pricesResponseEntityMapper::toDto).collect(Collectors.toList());
   }
